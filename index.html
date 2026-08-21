@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Костанай - Челябинск на микроавтобусе | Пассажирские перевозки</title>
+    <meta name="description" content="Ежедневные пассажирские перевозки между Костанаем и Челябинском на микроавтобусах комфорт-класса Volkswagen Caravelle. Цены от 2 500 ₽. Бронирование через диспетчера.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A0D0F'/%3E%3Cpath d='M16 32 L28 32 L36 20 L44 32 L48 32 L38 44 L30 32 L16 32 Z' fill='%23D4AF37'/%3E%3Ccircle cx='20' cy='42' r='4' fill='%23AEB7BC'/%3E%3Ccircle cx='44' cy='42' r='4' fill='%23AEB7BC'/%3E%3Cpath d='M12 48 L52 48' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+    <style>
+        :root {
+            --color-bg: #0A0D0F;
+            --color-bg-secondary: #12171A;
+            --color-bg-card: #1B2226;
+            --color-text: #F4F5F6;
+            --color-text-muted: #AEB7BC;
+            --color-accent: #D4AF37;
+            --color-accent-hover: #C9A227;
+            --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --header-height: 70px;
+            --mobile-nav-height: 60px;
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 60px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .btn--primary {
+            background-color: var(--color-accent);
+            color: #0A0D0F;
+            border-color: var(--color-accent);
+        }
+
+        .btn--primary:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+        }
+
+        .btn--outline {
+            background-color: transparent;
+            border-color: var(--color-text-muted);
+            color: var(--color-text);
+        }
+
+        .btn--outline:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .btn--large {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+
+        .btn--whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+            color: #000;
+        }
+
+        .btn--whatsapp:hover {
+            background-color: transparent;
+            color: #25D366;
+        }
+
+        .btn--instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            border: none;
+            color: #fff;
+        }
+
+        .btn--instagram:hover {
+            opacity: 0.9;
+            color: #fff;
+        }
+
+        /* Шапка */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--color-bg);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: box-shadow 0.3s;
+        }
+
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 20px;
+        }
+
+        .header__logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .header__logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--color-text);
+        }
+
+        .header__logo-sub {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header__menu {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header__menu a {
+            position: relative;
+            padding: 5px 0;
+            font-weight: 500;
+            color: var(--color-text);
+            font-size: 0.95rem;
+        }
+
+        .header__menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width 0.3s;
+        }
+
+        .header__menu a:hover::after {
+            width: 100%;
+        }
+
+        .header__cta {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            background-color: var(--color-bg-secondary);
+            overflow: hidden;
+            padding: 60px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(212,175,55,0.15), transparent 60%);
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero__title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .hero__subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text-muted);
+            margin-bottom: 10px;
+        }
+
+        .hero__text {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 25px;
+        }
+
+        .hero__actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        /* Секции */
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section__title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section__subtitle {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section__cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Цены */
+        .prices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .price-card {
+            background-color: var(--color-bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .price-card--highlight {
+            border-color: var(--color-accent);
+        }
+
+        .price-card__title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--color-text-muted);
+        }
+
+        .price-card__price {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--color-accent);
+        }
+
+        .price-card__btn {
+            margin-bottom: 10px;
+        }
+
+        .price-card__note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Расписание */
+        .schedule-tabs {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .schedule-tabs__buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .schedule-tabs__btn {
+            padding: 10px 20px;
+            border: 2px solid var(--color-text-muted);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .schedule-tabs__btn--active {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #000;
+        }
+
+        .schedule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--color-bg-card);
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .schedule-item__time {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+        }
+
+        .schedule-item__label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .schedule-item__value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .schedule-item__arrow {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .schedule-tabs__disclaimer {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Время в пути */
+        .travel-time__diagrams {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .route-diagram {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .route-diagram__point {
+            font-weight: 700;
+            font-size: 1.1rem;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .route-diagram__line {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            color: var(--color-accent);
+            min-width: 100px;
+        }
+
+        .route-diagram__time {
+            background-color: var(--color-bg);
+            padding: 0 10px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Услуги */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: var(--color-bg-card);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card__icon {
+            color: var(--color-accent);
+            font-size: 2rem;
+        }
+
+        .service-card__title {
+            font-size: 1.2rem;
+        }
+
+        .service-card__description {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        /* Комфорт */
+        .comfort-block__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .comfort-item {
+            text-align: center;
+            padding: 25px 15px;
+            background-color: var(--color-bg-card);
+            border-radius: var(--border-radius);
+        }
+
+        .comfort-item__icon {
+            color: var(--color-accent);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .comfort-item__title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .comfort-item__description {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Шаги */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .step-item {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--color-bg-card);
+            border-radius: var(--border-radius);
+        }
+
+        .step-item__number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Контакты */
+        .contacts-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--color-bg-card);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .contacts-card__dispatcher {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .contacts-card__phone {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Форма */
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--color-bg-card);
+            padding: 25px;
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .booking-form__submit {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        /* FAQ */
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--color-bg-card);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-item__question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .faq-item__icon {
+            font-size: 1.3rem;
+            color: var(--color-accent);
+        }
+
+        .faq-item__answer {
+            padding: 0 20px 15px;
+            color: var(--color-text-muted);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: none;
+        }
+
+        .faq-item--open .faq-item__answer {
+            display: block;
+        }
+
+        /* Футер */
+        .footer {
+            background-color: var(--color-bg-secondary);
+            padding: 40px 20px 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer__contacts {
+            margin: 20px 0;
+        }
+
+        .footer__contacts a {
+            display: inline-block;
+            margin: 5px 10px;
+        }
+
+        /* Мобильная навигация */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--color-bg-secondary);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            z-index: 100;
+            height: var(--mobile-nav-height);
+            display: flex;
+        }
+
+        .mobile-bottom-nav__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            gap: 2px;
+            text-decoration: none;
+        }
+
+        .mobile-bottom-nav__item--primary {
+            background-color: var(--color-accent);
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header__inner {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+            
+            .header__menu {
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .header__menu a {
+                font-size: 0.85rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 40px 15px;
+            }
+            
+            .section {
+                padding: 40px 15px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="header__inner">
+            <div class="header__logo">
+                <span class="header__logo-text">DOVEZUKA</span>
+                <span class="header__logo-sub">Костанай ↔ Челябинск</span>
+            </div>
+            <nav class="header__nav">
+                <ul class="header__menu">
+                    <li><a href="#prices">Цены</a></li>
+                    <li><a href="#schedule">Расписание</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#comfort">Комфорт</a></li>
+                    <li><a href="#faq">Вопросы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+                <a href="tel:+77773760262" class="btn btn--primary header__cta">Забронировать</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">Костанай ↔ Челябинск</h1>
+            <p class="hero__subtitle">Ежедневные пассажирские перевозки на микроавтобусах комфорт-класса</p>
+            <p class="hero__text">Поездки между Костанаем и Челябинском. Бронирование места через диспетчера.</p>
+            <div class="hero__actions">
+                <a href="tel:+77773760262" class="btn btn--primary btn--large">Забронировать место</a>
+                <a href="tel:+77773760262" class="btn btn--outline btn--large">Позвонить диспетчеру</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цены -->
+    <section class="section" id="prices">
+        <h2 class="section__title">Прайс-лист</h2>
+        <p class="section__subtitle">Актуальная стоимость поездок</p>
+        <div class="container">
+            <div class="prices-grid">
+                <div class="price-card">
+                    <h3 class="price-card__title">Костанай → Челябинск</h3>
+                    <div class="price-card__price">12 000 ₸</div>
+                    <a href="tel:+77773760262" class="btn btn--primary">Забронировать</a>
+                </div>
+                <div class="price-card price-card--highlight">
+                    <h3 class="price-card__title">Челябинск → Костанай</h3>
+                    <div class="price-card__price">2 500 ₽</div>
+                    <a href="tel:+77773760262" class="btn btn--primary">Забронировать</a>
+                </div>
+                <div class="price-card">
+                    <h3 class="price-card__title">Костанай → аэропорт Челябинска</h3>
+                    <div class="price-card__price">13 000 ₸ / 2 500 ₽</div>
+                    <a href="tel:+77773760262" class="btn btn--primary">Забронировать</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: var(--color-text-muted);">Для получения дополнительной информации свяжитесь с диспетчером.</p>
+        </div>
+    </section>
+
+    <!-- Расписание -->
+    <section class="section" id="schedule" style="background-color: var(--color-bg-secondary);">
+        <h2 class="section__title">Ежедневные выезды</h2>
+        <div class="container">
+            <div class="schedule-tabs">
+                <div class="schedule-tabs__buttons">
+                    <button class="schedule-tabs__btn schedule-tabs__btn--active" onclick="showSchedule('kostanay')">Костанай → Челябинск</button>
+                    <button class="schedule-tabs__btn" onclick="showSchedule('chelyabinsk')">Челябинск → Костанай</button>
+                </div>
+                <div class="schedule-list" id="schedule-kostanay">
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">03:00-04:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">08:00-10:00</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">07:00-09:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">12:00-15:00</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">18:00-20:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">23:00-02:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-list" id="schedule-chelyabinsk" style="display: none;">
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">05:00-07:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">10:00-13:00</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">06:00-08:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">11:00-14:00</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">09:00-10:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">14:00-16:00</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">12:00-14:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">17:00-20:00</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">16:00-18:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">21:00-00:00</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Выезд</span>
+                            <span class="schedule-item__value">17:00-19:00</span>
+                        </div>
+                        <div class="schedule-item__arrow">→</div>
+                        <div class="schedule-item__time">
+                            <span class="schedule-item__label">Прибытие</span>
+                            <span class="schedule-item__value">22:00-01:00</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="schedule-tabs__disclaimer">Дополнительное время обсуждается с диспетчером. Время прибытия ориентировочное и может изменяться в зависимости от дорожной ситуации и прохождения границы.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Время в пути -->
+    <section class="section">
+        <h2 class="section__title">Ориентировочное время в пути - 5-6 часов</h2>
+        <p class="section__subtitle">Время прибытия может изменяться в зависимости от дорожной ситуации и прохождения границы.</p>
+        <div class="container">
+            <div class="travel-time__diagrams">
+                <div class="route-diagram">
+                    <div class="route-diagram__point">Костанай</div>
+                    <div class="route-diagram__line">
+                        <span class="route-diagram__time">5-6 часов</span>
+                        <span>→</span>
+                    </div>
+                    <div class="route-diagram__point">Челябинск</div>
+                </div>
+                <div class="route-diagram">
+                    <div class="route-diagram__point">Челябинск</div>
+                    <div class="route-diagram__line">
+                        <span class="route-diagram__time">5-6 часов</span>
+                        <span>→</span>
+                    </div>
+                    <div class="route-diagram__point">Костанай</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Комфорт -->
+    <section class="section" id="comfort" style="background-color: var(--color-bg-secondary);">
+        <h2 class="section__title">Комфорт в дороге</h2>
+        <p class="section__subtitle">Поездки между Костанаем и Челябинском проходят на микроавтобусах Volkswagen Caravelle T5 и T6 комфорт-класса.</p>
+        <div class="container">
+            <div class="comfort-block__grid">
+                <div class="comfort-item">
+                    <div class="comfort-item__icon">❄️</div>
+                    <h3 class="comfort-item__title">Кондиционер</h3>
+                    <p class="comfort-item__description">Комфортная температура в салоне</p>
+                </div>
+                <div class="comfort-item">
+                    <div class="comfort-item__icon">📺</div>
+                    <h3 class="comfort-item__title">Мультимедиа</h3>
+                    <p class="comfort-item__description">Развлечения в дороге</p>
+                </div>
+                <div class="comfort-item">
+                    <div class="comfort-item__icon">🎵</div>
+                    <h3 class="comfort-item__title">Приятная музыка</h3>
+                    <p class="comfort-item__description">Хорошее настроение</p>
+                </div>
+                <div class="comfort-item">
+                    <div class="comfort-item__icon">💺</div>
+                    <h3 class="comfort-item__title">Комфортный салон</h3>
+                    <p class="comfort-item__description">Volkswagen Caravelle T5 и T6</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="section" id="services">
+        <h2 class="section__title">Больше, чем пассажирские перевозки</h2>
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-card__icon">🚐</div>
+                    <h3 class="service-card__title">Пассажирские перевозки</h3>
+                    <p class="service-card__description">Костанай → Челябинск и Челябинск → Костанай. Ежедневные выезды.</p>
+                    <a href="tel:+77773760262" class="btn btn--primary">Забронировать место</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">📦</div>
+                    <h3 class="service-card__title">Доставка посылок</h3>
+                    <p class="service-card__description">Передача посылок по предварительной договоренности с диспетчером.</p>
+                    <a href="tel:+77773760262" class="btn btn--outline">Уточнить условия</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🐾</div>
+                    <h3 class="service-card__title">Перевозка домашних животных</h3>
+                    <p class="service-card__description">По предварительной договоренности. Условия согласуются заранее.</p>
+                    <a href="tel:+77773760262" class="btn btn--outline">Уточнить у диспетчера</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">✈️</div>
+                    <h3 class="service-card__title">Поездка до аэропорта Челябинска</h3>
+                    <p class="service-card__description">Костанай → аэропорт Челябинска. 13 000 ₸ / 2 500 ₽</p>
+                    <a href="tel:+77773760262" class="btn btn--primary">Забронировать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как забронировать -->
+    <section class="section" style="background-color: var(--color-bg-secondary);">
+        <h2 class="section__title">Как забронировать</h2>
+        <div class="container">
+            <div class="steps-grid">
+                <div class="step-item">
+                    <span class="step-item__number">01</span>
+                    <p>Выберите направление</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-item__number">02</span>
+                    <p>Уточните дату и время</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-item__number">03</span>
+                    <p>Свяжитесь с диспетчером</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-item__number">04</span>
+                    <p>Забронируйте место</p>
+                </div>
+            </div>
+            <div class="section__cta">
+                <a href="tel:+77773760262" class="btn btn--primary btn--large">Забронировать</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="section" id="contacts">
+        <h2 class="section__title">Забронировать поездку</h2>
+        <div class="container">
+            <div class="contacts-card">
+                <p class="contacts-card__dispatcher">Диспетчер: Ольга</p>
+                <p class="contacts-card__phone">
+                    <a href="tel:+77773760262">+7 777 376 0262</a>
+                </p>
+                <p class="contacts-card__phone">
+                    <a href="tel:+77142755001">+7 (7142) 755-001</a>
+                </p>
+                <div class="contact-buttons">
+                    <a href="tel:+77773760262" class="btn btn--primary">Позвонить</a>
+                    <a href="https://wa.me/77773760262" target="_blank" class="btn btn--whatsapp">WhatsApp</a>
+                    <a href="https://www.instagram.com/dovezuka_755_001/" target="_blank" class="btn btn--instagram">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма бронирования -->
+    <section class="section" style="background-color: var(--color-bg-secondary);">
+        <h2 class="section__title">Форма бронирования</h2>
+        <div class="container">
+            <form class="booking-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" required placeholder="Ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" required placeholder="+7 ___ ___ __ __">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="direction">Направление</label>
+                        <select id="direction">
+                            <option>Костанай → Челябинск</option>
+                            <option>Челябинск → Костанай</option>
+                            <option>Костанай → аэропорт Челябинска</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Дата поездки</label>
+                        <input type="date" id="date">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="passengers">Количество пассажиров</label>
+                        <select id="passengers">
+                            <option>1</option><option>2</option><option>3</option>
+                            <option>4</option><option>5</option><option>6</option>
+                            <option>7</option><option>8</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Комментарий</label>
+                        <input type="text" id="comment" placeholder="Дополнительно">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn--primary booking-form__submit">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <h2 class="section__title">Вопросы и ответы</h2>
+        <div class="container">
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFAQ(this)">
+                        <span>Сколько стоит поездка из Костаная в Челябинск?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">Стоимость поездки из Костаная в Челябинск составляет 12 000 ₸.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFAQ(this)">
+                        <span>Сколько стоит поездка из Челябинска в Костанай?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">Стоимость поездки из Челябинска в Костанай составляет 2 500 ₽.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFAQ(this)">
+                        <span>Сколько времени занимает поездка?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">Ориентировочное время в пути — 5-6 часов. Время прибытия может изменяться в зависимости от дорожной ситуации и прохождения границы.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFAQ(this)">
+                        <span>Можно ли передать посылку?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">Да, мы осуществляем доставку посылок по направлению Костанай ↔ Челябинск. Передача посылок производится по предварительной договоренности с диспетчером.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFAQ(this)">
+                        <span>Можно ли перевозить домашнее животное?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">Перевозка домашних животных возможна по предварительной договоренности с диспетчером. Условия необходимо заранее согласовать.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFAQ(this)">
+                        <span>На каких автомобилях осуществляются поездки?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">Поездки выполняются на микроавтобусах Volkswagen Caravelle T5 и T6 комфорт-класса.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__question" onclick="toggleFAQ(this)">
+                        <span>Как связаться с диспетчером?</span>
+                        <span class="faq-item__icon">+</span>
+                    </button>
+                    <div class="faq-item__answer">Вы можете позвонить по номеру +7 777 376 0262 или написать в WhatsApp. Диспетчер: Ольга.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <h2 style="font-size: 1.5rem; margin-bottom: 10px;">DOVEZUKA</h2>
+        <p style="color: var(--color-accent);">@dovezuka_755_001</p>
+        <p style="color: var(--color-text-muted);">Костанай ↔ Челябинск</p>
+        <div class="footer__contacts">
+            <a href="tel:+77773760262">+7 777 376 0262</a>
+            <a href="tel:+77142755001">+7 (7142) 755-001</a>
+            <a href="https://www.instagram.com/dovezuka_755_001/" target="_blank">Instagram: @dovezuka_755_001</a>
+        </div>
+        <p style="color: var(--color-text-muted); font-size: 0.85rem;">© 2024 Dovezuka. Все права защищены.</p>
+    </footer>
+
+    <!-- Мобильная навигация -->
+    <div class="mobile-bottom-nav">
+        <a href="tel:+77773760262" class="mobile-bottom-nav__item">
+            <span>📞</span>
+            <span>Позвонить</span>
+        </a>
+        <a href="https://wa.me/77773760262" target="_blank" class="mobile-bottom-nav__item">
+            <span>💬</span>
+            <span>WhatsApp</span>
+        </a>
+        <a href="#contacts" class="mobile-bottom-nav__item mobile-bottom-nav__item--primary">
+            <span>📅</span>
+            <span>Забронировать</span>
+        </a>
+    </div>
+
+    <script>
+        // Переключение расписания
+        function showSchedule(direction) {
+            const kostanay = document.getElementById('schedule-kostanay');
+            const chelyabinsk = document.getElementById('schedule-chelyabinsk');
+            const buttons = document.querySelectorAll('.schedule-tabs__btn');
+            
+            if (direction === 'kostanay') {
+                kostanay.style.display = 'flex';
+                chelyabinsk.style.display = 'none';
+                buttons[0].classList.add('schedule-tabs__btn--active');
+                buttons[1].classList.remove('schedule-tabs__btn--active');
+            } else {
+                kostanay.style.display = 'none';
+                chelyabinsk.style.display = 'flex';
+                buttons[1].classList.add('schedule-tabs__btn--active');
+                buttons[0].classList.remove('schedule-tabs__btn--active');
+            }
+        }
+
+        // FAQ аккордеон
+        function toggleFAQ(button) {
+            const item = button.parentElement;
+            const answer = item.querySelector('.faq-item__answer');
+            const icon = item.querySelector('.faq-item__icon');
+            const isOpen = item.classList.contains('faq-item--open');
+            
+            // Закрыть все
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('faq-item--open');
+                faq.querySelector('.faq-item__answer').style.display = 'none';
+                faq.querySelector('.faq-item__icon').textContent = '+';
+            });
+            
+            // Открыть текущий
+            if (!isOpen) {
+                item.classList.add('faq-item--open');
+                answer.style.display = 'block';
+                icon.textContent = '−';
+            }
+        }
+
+        // Форма бронирования
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const direction = document.getElementById('direction').value;
+            const date = document.getElementById('date').value;
+            const passengers = document.getElementById('passengers').value;
+            const comment = document.getElementById('comment').value;
+            
+            const message = `Здравствуйте! Хочу забронировать поездку.\n\n` +
+                `Направление: ${direction}\n` +
+                `Дата: ${date || 'не указана'}\n` +
+                `Количество пассажиров: ${passengers}\n\n` +
+                `Имя: ${name}\n` +
+                `Телефон: ${phone}\n` +
+                `Комментарий: ${comment || 'нет'}`;
+            
+            const waLink = `https://wa.me/77773760262?text=${encodeURIComponent(message)}`;
+            window.open(waLink, '_blank');
+            
+            alert('Спасибо! Заявка отправлена. Диспетчер свяжется с вами.');
+            event.target.reset();
+        }
+    </script>
+
+</body>
+</html>
