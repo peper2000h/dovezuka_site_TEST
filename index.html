@@ -10,17 +10,17 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dovezuka505.ru">
-    <meta property="og:title" content="Пассажирские перевозки | Костанай Челябинск | DOVEZUKA">
-    <meta property="og:description" content="Ежедневные поездки между Костанаем и Челябинском. Комфортные автомобили, опытные водители. Бронирование через диспетчера.">
-    <meta property="og:image" content="https://dovezuka505.ru/images/og-image.jpg">
+    <meta property="og:url" content="https://dovezuka.kz">
+    <meta property="og:title" content="Костанай ↔ Челябинск | Пассажирские перевозки DOVEZUKA">
+    <meta property="og:description" content="Ежедневные поездки между Костанаем и Челябинском. Комфортные микроавтобусы, опытные водители. Бронирование через диспетчера.">
+    <meta property="og:image" content="https://dovezuka.kz/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Пассажирские перевозки | Костанай Челябинск | DOVEZUKA">
-    <meta name="twitter:description" content="Ежедневные поездки между Костанаем и Челябинском. Комфортные автомобили, опытные водители.">
+    <meta name="twitter:title" content="Костанай ↔ Челябинск | Пассажирские перевозки DOVEZUKA">
+    <meta name="twitter:description" content="Ежедневные поездки между Костанаем и Челябинском. Комфортные микроавтобусы, опытные водители.">
     <meta name="twitter:image" content="https://dovezuka.kz/images/og-image.jpg">
 
     <!-- Geo -->
@@ -427,6 +427,15 @@
             opacity: 0;
             animation: slideIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
+
+	.site-divider {
+ 	 border: none;                  /* Убираем стандартную рамку */
+ 	 height: 1px;                   /* Толщина линии */
+ 	 background-color: #333333;     /* Темно-серый цвет (можно #444 или #2d2d2d) */
+ 	 margin: 40px auto;             /* Отступы сверху и снизу по 40px */
+ 	 width: 80%;                    /* Линия займет 80% ширины экрана (можно 100%) */
+	}
+
 
         @keyframes slideIn {
             0% {
@@ -840,6 +849,105 @@
             color: var(--color-text-muted);
             font-size: 0.9rem;
             flex-grow: 1;
+        }
+
+        /* ===== КАРУСЕЛЬ ОТЗЫВОВ ===== */
+        .reviews-carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background-color: var(--color-bg-card);
+            padding: 20px 0;
+        }
+
+        .reviews-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .review-card {
+            flex: 0 0 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .review-card img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+            border-radius: 8px;
+            background-color: var(--color-bg);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .review-name {
+            display: block;
+            margin-top: 12px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--color-text);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 13, 15, 0.75);
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-size: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.2s;
+            z-index: 5;
+            backdrop-filter: blur(4px);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-accent);
+            color: #000;
+        }
+
+        .carousel-btn--prev {
+            left: 10px;
+        }
+        .carousel-btn--next {
+            right: 10px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid var(--color-text-muted);
+            background: transparent;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+            padding: 0;
+        }
+
+        .carousel-dot--active {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
         }
 
         /* ===== ШАГИ ===== */
@@ -1257,6 +1365,24 @@
                 font-size: 0.8rem;
             }
 
+            .review-card img {
+                max-height: 300px;
+            }
+            .carousel-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1.5rem;
+            }
+            .carousel-btn--prev {
+                left: 5px;
+            }
+            .carousel-btn--next {
+                right: 5px;
+            }
+            .review-name {
+                font-size: 0.9rem;
+            }
+
             .steps-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
@@ -1394,6 +1520,15 @@
                 margin-right: auto;
             }
 
+            .review-card img {
+                max-height: 220px;
+            }
+            .carousel-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 1.2rem;
+            }
+
             .steps-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1528,6 +1663,7 @@
                     <li><a href="#comfort">Комфорт</a></li>
                     <li><a href="#gallery">Автопарк</a></li>
                     <li><a href="#services">Услуги</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
                     <li><a href="#faq">Вопросы</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
@@ -1793,45 +1929,93 @@
         </div>
     </section>
 
-<!-- ===== УСЛУГИ ===== -->
-<section class="section" id="services" style="background-color: var(--color-bg-secondary);">
-    <h2 class="section__title">Наши услуги</h2>
-    <p class="section__subtitle">Больше, чем пассажирские перевозки</p>
-    <div class="container">
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-card__icon">🚐</div>
-                <h3 class="service-card__title">Пассажирские перевозки</h3>
-                <p class="service-card__description">Регулярные рейсы Костанай ↔ Челябинск. Ежедневные выезды.</p>
-                <a href="tel:+77773760262" class="btn btn--outline">Связаться</a>
-            </div>
-            <div class="service-card">
-                <div class="service-card__icon">📦</div>
-                <h3 class="service-card__title">Доставка посылок</h3>
-                <p class="service-card__description">Передача посылок по предварительной договоренности.</p>
-                <a href="tel:+77773760262" class="btn btn--outline">Уточнить</a>
-            </div>
-            <div class="service-card">
-                <div class="service-card__icon">🐾</div>
-                <h3 class="service-card__title">Перевозка животных</h3>
-                <p class="service-card__description">Перевозка питомцев по предварительной договоренности.</p>
-                <a href="tel:+77773760262" class="btn btn--outline">Уточнить</a>
-            </div>
-            <div class="service-card">
-                <div class="service-card__icon">✈️</div>
-                <h3 class="service-card__title">Трансфер в аэропорт</h3>
-                <p class="service-card__description">Костанай → аэропорт Челябинска. 13 000 ₸ / 2 500 ₽.</p>
-                <a href="tel:+77773760262" class="btn btn--outline">Связаться</a>
-            </div>
-            <div class="service-card">
-                <div class="service-card__icon">🚗</div>
-                <h3 class="service-card__title">Индивидуальные заказы</h3>
-                <p class="service-card__description">Полный салон автомобиля для вашей компании. <br> Стоимость поездки оговаривается отдельно с диспетчером.</p>
-                <a href="tel:+77773760262" class="btn btn--outline">Связаться</a>
+    <!-- ===== УСЛУГИ ===== -->
+    <section class="section" id="services" style="background-color: var(--color-bg-secondary);">
+        <h2 class="section__title">Наши услуги</h2>
+        <p class="section__subtitle">Больше, чем пассажирские перевозки</p>
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-card__icon">🚐</div>
+                    <h3 class="service-card__title">Пассажирские перевозки</h3>
+                    <p class="service-card__description">Регулярные рейсы Костанай ↔ Челябинск. Ежедневные выезды.</p>
+                    <a href="tel:+77773760262" class="btn btn--outline">Связаться</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">📦</div>
+                    <h3 class="service-card__title">Доставка посылок</h3>
+                    <p class="service-card__description">Передача посылок по предварительной договоренности.</p>
+                    <a href="tel:+77773760262" class="btn btn--outline">Уточнить</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🐾</div>
+                    <h3 class="service-card__title">Перевозка животных</h3>
+                    <p class="service-card__description">Перевозка питомцев по предварительной договоренности.</p>
+                    <a href="tel:+77773760262" class="btn btn--outline">Уточнить</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">✈️</div>
+                    <h3 class="service-card__title">Трансфер в аэропорт</h3>
+                    <p class="service-card__description">Костанай → аэропорт Челябинска. 13 000 ₸ / 2 500 ₽.</p>
+                    <a href="tel:+77773760262" class="btn btn--outline">Связаться</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🚗</div>
+                    <h3 class="service-card__title">Индивидуальные заказы</h3>
+                    <p class="service-card__description">Полный салон автомобиля для вашей компании. <br> Стоимость поездки оговаривается отдельно с диспетчером.</p>
+                    <a href="tel:+77773760262" class="btn btn--outline">Связаться</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- ===== ОТЗЫВЫ ===== -->
+    <section class="section" id="reviews">
+        <h2 class="section__title">Отзывы наших клиентов</h2>
+        <p class="section__subtitle">Что говорят о нас пассажиры</p>
+        <div class="container">
+            <div class="reviews-carousel">
+                <div class="reviews-track" id="reviewsTrack">
+                    <!-- Каждый отзыв – карточка с изображением и именем -->
+                    <div class="review-card">
+                        <img src="images/reviews/review1.jpg" alt="Отзыв клиента 1" loading="lazy">
+                        <span class="review-name">Анна, Костанай</span>
+                    </div>
+                    <div class="review-card">
+                        <img src="images/reviews/review2.jpg" alt="Отзыв клиента 2" loading="lazy">
+                        <span class="review-name">Валентина, Челябинск</span>
+                    </div>
+                    <div class="review-card">
+                        <img src="images/reviews/review3.jpg" alt="Отзыв клиента 3" loading="lazy">
+                        <span class="review-name">Екатерина, Костанай</span>
+                    </div>
+                    <div class="review-card">
+                        <img src="images/reviews/review4.jpg" alt="Отзыв клиента 4" loading="lazy">
+                        <span class="review-name">Сергей, Челябинск</span>
+                    </div>
+                    <div class="review-card">
+                        <img src="images/reviews/review5.jpg" alt="Отзыв клиента 5" loading="lazy">
+                        <span class="review-name">Ольга, Костанай</span>
+                    </div>
+                    <div class="review-card">
+                        <img src="images/reviews/review6.jpg" alt="Отзыв клиента 6" loading="lazy">
+                        <span class="review-name">Марина, Костанай</span>
+                    </div>
+                    <!-- Добавляйте новые карточки по необходимости -->
+                </div>
+                <!-- Стрелки навигации -->
+                <button class="carousel-btn carousel-btn--prev" id="prevBtn" aria-label="Предыдущий отзыв">‹</button>
+                <button class="carousel-btn carousel-btn--next" id="nextBtn" aria-label="Следующий отзыв">›</button>
+                <!-- Индикаторы -->
+                <div class="carousel-dots" id="dotsContainer"></div>
+            </div>
+            <p style="text-align: center; color: var(--color-text-muted); margin-top: 15px; font-size: 0.9rem;">
+                Скриншоты отзывов от наших пассажиров ❤
+            </p>
+        </div>
+    </section>
+
+<hr class="site-divider">
 
     <!-- ===== КАК ЗАБРОНИРОВАТЬ ===== -->
     <section class="section">
@@ -1960,16 +2144,16 @@
                         <span>Какие документы нужны для пересечения границы?</span>
                         <span class="faq-item__icon">+</span>
                     </button>
-                    <div class="faq-item__answer">Для граждан Казахстана и России достаточно внутреннего паспорта ли удостоверения личности. 
-				<br>Гражданам России до 14 лет нужен загранпаспорт.</br></div>
+                    <div class="faq-item__answer">Для граждан Казахстана и России достаточно внутреннего паспорта или удостоверения личности. 
+				<br>Детям гражданам России до 14 лет обязательно нужен загранпаспорт.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-item__question" onclick="toggleFAQ(this)">
                         <span>Можно ли ехать с ребенком и предоставляете ли вы детские кресла?</span>
                         <span class="faq-item__icon">+</span>
                     </button>
-                    <div class="faq-item__answer">Да, конечно. Для детей предоставляются детские кресла и бустеры в зависимости от возраста ребенка. Также для детей до 			5 лет предусмотрена скидка на поездку. <br>
-			<br><b>Важно:</b> о поездке с ребенком необходимо предупредить диспетчера заранее. Это необходимо для того, чтобы подготовить подходящее детское кресло или бустер и правильно рассчитать стоимость поездки. </br> </div>
+                    <div class="faq-item__answer">Да, конечно. Для детей предоставляются детские кресла и бустеры в зависимости от возраста ребенка. Также для детей до 5 лет предусмотрена скидка на поездку. <br>
+			<br><b>Важно:</b> о поездке с ребенком необходимо предупредить диспетчера заранее. Это необходимо для того, чтобы подготовить подходящее детское кресло или бустер и правильно рассчитать стоимость поездки.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-item__question" onclick="toggleFAQ(this)">
@@ -2163,6 +2347,78 @@
             alert('Спасибо! Заявка отправлена. Диспетчер свяжется с вами.');
             event.target.reset();
         }
+
+        // ===== КАРУСЕЛЬ ОТЗЫВОВ =====
+        (function() {
+            var track = document.getElementById('reviewsTrack');
+            if (!track) return;
+
+            var cards = track.querySelectorAll('.review-card');
+            var total = cards.length;
+            if (total === 0) return;
+
+            var prevBtn = document.getElementById('prevBtn');
+            var nextBtn = document.getElementById('nextBtn');
+            var dotsContainer = document.getElementById('dotsContainer');
+            var currentIndex = 0;
+
+            // Создаём точки
+            for (var i = 0; i < total; i++) {
+                var dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('carousel-dot--active');
+                dot.setAttribute('aria-label', 'Перейти к отзыву ' + (i + 1));
+                (function(index) {
+                    dot.addEventListener('click', function() {
+                        goTo(index);
+                    });
+                })(i);
+                dotsContainer.appendChild(dot);
+            }
+
+            var dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+            function goTo(index) {
+                if (index < 0) index = total - 1;
+                if (index >= total) index = 0;
+                currentIndex = index;
+                track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+                dots.forEach(function(dot, i) {
+                    dot.classList.toggle('carousel-dot--active', i === currentIndex);
+                });
+            }
+
+            prevBtn.addEventListener('click', function() {
+                goTo(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', function() {
+                goTo(currentIndex + 1);
+            });
+
+            // Автопрокрутка
+            var autoPlay = setInterval(function() {
+                goTo(currentIndex + 1);
+            }, 5000);
+
+            var carousel = document.querySelector('.reviews-carousel');
+            carousel.addEventListener('mouseenter', function() {
+                clearInterval(autoPlay);
+            });
+            carousel.addEventListener('mouseleave', function() {
+                autoPlay = setInterval(function() {
+                    goTo(currentIndex + 1);
+                }, 5000);
+            });
+            carousel.addEventListener('touchstart', function() {
+                clearInterval(autoPlay);
+            });
+            carousel.addEventListener('touchend', function() {
+                autoPlay = setInterval(function() {
+                    goTo(currentIndex + 1);
+                }, 5000);
+            });
+        })();
     </script>
 
 </body>
